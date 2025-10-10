@@ -1,15 +1,18 @@
 <?php
 include __DIR__ . "/../includes/db.php";
-include __DIR__ . "/../includes/header.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Smart Retail System</title>
-   <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
+
+    <!-- Navbar -->
+    <?php include __DIR__ . "/../includes/header.php"; ?>
+
     <div class="container">
         <h1>Welcome to Smart Retail System</h1>
         <p>Your one-stop shop for all products.</p>
@@ -23,9 +26,9 @@ include __DIR__ . "/../includes/header.php";
             if ($result && $result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<div class='product'>";
-                    echo "<h3>" . $row['name'] . "</h3>";
-                    echo "<p>" . $row['description'] . "</p>";
-                    echo "<p><strong>R " . $row['price'] . "</strong></p>";
+                    echo "<h3>" . htmlspecialchars($row['name']) . "</h3>";
+                    echo "<p>" . htmlspecialchars($row['description']) . "</p>";
+                    echo "<p><strong>R " . number_format($row['price'], 2) . "</strong></p>";
                     echo "<a href='products.php'>View More</a>";
                     echo "</div>";
                 }
@@ -35,5 +38,9 @@ include __DIR__ . "/../includes/header.php";
             ?>
         </div>
     </div>
+
+    <!-- Footer -->
+    <?php include __DIR__ . "/../includes/footer.php"; ?>
+
 </body>
 </html>

@@ -1,15 +1,21 @@
 <?php 
 include __DIR__ . "/config.php"; 
-// Get cart count
 $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Retail System</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
 
-   <link rel="stylesheet" href="../assets/css/styles.css">
-
-<div class="navbar">
+<nav class="navbar">
     <a href="<?php echo BASE_URL; ?>index.php">Home</a>
     <a href="<?php echo BASE_URL; ?>products.php">Products</a>
-    <a href="<?php echo BASE_URL; ?>cart.php">
+    <a href="<?php echo BASE_URL; ?>cart.php" class="cart-link">
         Cart
         <?php if($cart_count > 0): ?>
             <span class="cart-count"><?php echo $cart_count; ?></span>
@@ -17,4 +23,7 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
     </a>
     <a href="<?php echo BASE_URL; ?>admin/login.php">Login</a>
     <a href="<?php echo BASE_URL; ?>register.php">Register</a>
-</div>
+</nav>
+
+</body>
+</html>

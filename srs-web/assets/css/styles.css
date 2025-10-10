@@ -42,6 +42,7 @@ h3 {
     margin-top: 25px;
 }
 
+
 /* Product Card */
 .product {
     background: #fff;
@@ -1007,4 +1008,57 @@ a.back:hover {
     td:nth-of-type(4):before { content: "Status"; }
     td:nth-of-type(5):before { content: "Placed On"; }
     td:nth-of-type(6):before { content: "Actions"; }
+}
+
+/* Navbar container */
+.navbar {
+    background-color: #007bff; /* primary blue */
+    padding: 12px 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar links - simple style, no button-like background */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 4px 0; /* small vertical padding, no box */
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent; /* subtle underline effect */
+}
+
+/* Hover effect */
+.navbar a:hover {
+    color: #e0e0e0; /* lighter text color */
+    border-bottom: 2px solid #e0e0e0; /* subtle underline on hover */
+}
+
+/* Cart count badge */
+.cart-count {
+    background-color: #dc3545; /* red */
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}
+
+/* Responsive for small screens */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar a {
+        width: 100%;
+        margin-bottom: 5px;
+        padding: 4px 0;
+    }
 }
