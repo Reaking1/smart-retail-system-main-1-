@@ -16,7 +16,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    $stmt = $conn->prepare("SELECT * FROM admins WHERE username = ?");
+    // ✅ FIXED TABLE NAME
+    $stmt = $conn->prepare("SELECT * FROM admin_users WHERE username = ?");
+    if (!$stmt) {
+        die("Database error: " . $conn->error); // Debug line (optional but helpful)
+    }
+
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -39,8 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <title>Admin Login</title>
-  <link rel="stylesheet" href="../../assets/css/styles.css">
-
+    <link rel="stylesheet" href="../../assets/css/styles.css">
     <style>
         body { font-family: Arial, sans-serif; background: #f4f4f4; }
         .login-container { width: 400px; margin: 100px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
@@ -52,14 +56,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-    <!-- Shared header -->
-      <!-- Shared header -->
     <?php include __DIR__ . "/../../includes/header.php"; ?>
 
     <div class="login-container">
         <h1>Admin Login</h1>
         <?php if ($error): ?>
-            <p class="error"><?php echo $error; ?></p>
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
         <form method="POST" action="">
             <input type="text" name="username" placeholder="Enter username" required>
