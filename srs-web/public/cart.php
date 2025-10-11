@@ -60,45 +60,9 @@ if (!isset($_SESSION['cart'])) $_SESSION['cart'] = [];
 </div>
 
 <script>
-document.querySelectorAll('.remove-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        const row = this.closest('tr');
-        const id = row.dataset.id;
-     fetch('<?php echo BASE_URL; ?>cart_action.php', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: `action=remove&id=${id}`
-})
-
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) row.remove();
-            document.getElementById('grand-total').textContent = 'R ' + data.grand_total;
-        });
-    });
-});
-
-document.querySelectorAll('.qty-input').forEach(input => {
-    input.addEventListener('change', function() {
-        const row = this.closest('tr');
-        const id = row.dataset.id;
-        const qty = this.value;
-        fetch('<?php echo BASE_URL; ?>cart_action.php', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: `action=update&id=${id}&qty=${qty}`
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                const price = parseFloat(row.cells[1].textContent.replace('R ',''));
-                row.querySelector('.sub-total').textContent = 'R ' + (price * qty).toFixed(2);
-                document.getElementById('grand-total').textContent = 'R ' + data.grand_total;
-            }
-        });
-    });
-});
+     const BASE_URL = "<?php echo BASE_URL ?? ''; ?>";
 </script>
+<script src="../assets/JS/cart.js"></script>
 
 <?php include __DIR__ . "/../includes/footer.php"; ?>
 </body>
