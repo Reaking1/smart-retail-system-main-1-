@@ -20,7 +20,7 @@ $totalProducts  = $conn->query("SELECT COUNT(*) AS total FROM products")->fetch_
   
 </head>
 <body  class="admin-dashboard">
-    <?php include("/../includes/header.php"); ?>
+    <?php include("../../includes/header.php"); ?>
 
     <div class="container">
         <h1>Admin Dashboard</h1>

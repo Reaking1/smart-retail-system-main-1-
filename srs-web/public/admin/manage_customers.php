@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("../includes/db.php");
-include("../includes/auth.php"); // Protect page
+include("../../includes/db.php");
+include("../../includes/auth.php"); // Protect page
 
 // Fetch all customers
 $sql = "SELECT * FROM customers ORDER BY customer_id DESC";
@@ -15,7 +15,7 @@ $result = $conn->query($sql);
    <link rel="stylesheet" href="../../assets/css/styles.css">
 </head>
 <body class="manage-customers">
-<?php include("../includes/header.php"); ?>
+<?php include("../../includes/header.php"); ?>
 
 <div class="container">
     <h1>Manage Customers</h1>

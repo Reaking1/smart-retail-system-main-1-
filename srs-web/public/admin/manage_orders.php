@@ -1,7 +1,7 @@
 <?php
 session_start();
-include("../includes/db.php");
-include("../includes/auth.php"); // Protect page
+include("../../includes/db.php");
+include("../../includes/auth.php"); // Protect page
 
 // Update order status
 if (isset($_GET['update']) && isset($_GET['status'])) {
@@ -31,7 +31,7 @@ $result = $conn->query($sql);
     
 </head>
 <body class="manage-orders">
-<?php include("../includes/header.php"); ?>
+<?php include("../../includes/header.php"); ?>
 
 <div class="container">
     <h1>Manage Orders</h1>
