@@ -1062,3 +1062,11 @@ a.back:hover {
         padding: 4px 0;
     }
 }
+
+.admin-link {
+    opacity: 0.1;
+    transition: opacity 0.3s;
+}
+.admin-link:hover {
+    opacity: 1;
+}
